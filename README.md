@@ -83,7 +83,6 @@ To enable GitHub Pages:
 │   ├── layout.tsx         # Root layout
 │   ├── page.tsx           # Home page
 │   ├── contact/           # Contact page
-│   ├── events/            # Events page
 │   ├── media/             # Media page
 │   ├── people/            # People page
 │   ├── publications/      # Publications page

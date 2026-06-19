@@ -33,10 +33,7 @@ export function MainNav() {
           <Link href="/media" className="text-sm font-medium transition-colors hover:text-primary whitespace-nowrap">
             Media
           </Link>
-          <Link href="/events" className="text-sm font-medium transition-colors hover:text-primary whitespace-nowrap">
-            Events
-          </Link>
-          <Link href="/contact" className="text-sm font-medium transition-colors hover:text-primary whitespace-nowrap">
+<Link href="/contact" className="text-sm font-medium transition-colors hover:text-primary whitespace-nowrap">
             Contact
           </Link>
         </nav>

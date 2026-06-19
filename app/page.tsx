@@ -1,4 +1,4 @@
-import { ArrowRight, Brain, Heart, Users, Shield, Scale, Church, Calendar } from "lucide-react"
+import { ArrowRight, Brain, Heart, Users, Shield, Scale, Church } from "lucide-react"
 import { LabHighlightsReel } from "@/components/lab-highlights-reel"
 import { RecentPublications } from "@/components/recent-publications"
 import Link from "next/link"
@@ -102,50 +102,6 @@ export default function Home() {
                 </Link>
               )
             })}
-          </div>
-        </div>
-      </section>
-
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Recent Events</h2>
-              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                Check out our latest outreach activities and community engagement
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-12">
-            <Card className="overflow-hidden">
-              <div className="md:flex">
-                <div className="relative w-full md:w-2/5 aspect-video md:aspect-auto">
-                  <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bobcat-5.jpg-QKg03OPdMytXduBnBY8wcj2OLa3DgH.jpeg"
-                    alt="Young child interacting with the Unitree Go2 robot at Bobcat Day 2025"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6 md:w-3/5">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Calendar className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm text-muted-foreground">April 2025</span>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2">Bobcat Day 2025</h3>
-                  <p className="text-muted-foreground mb-4">
-                    EvoLab showcased our robots and research at UC Merced's annual Bobcat Day, engaging with prospective
-                    students and their families to promote the Cognitive Science major.
-                  </p>
-                  <Button asChild>
-                    <Link href="/events" className="flex items-center gap-2">
-                      View Event Gallery <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </Card>
           </div>
         </div>
       </section>
