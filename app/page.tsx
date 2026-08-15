@@ -52,9 +52,13 @@ export default function Home() {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center space-y-6 text-center">
             <div className="space-y-4 max-w-3xl">
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
-                Welcome to EvoLab
-              </h1>
+              <Image
+                src="/images/Stay Human.png"
+                alt="Stay Human"
+                width={600}
+                height={200}
+                className="mx-auto"
+              />
               <p className="mx-auto max-w-[800px] text-xl md:text-2xl text-gray-200">
                 Studying human-AI interaction and trust levels in crisis situations through innovative research and
                 methodologies.
@@ -63,9 +67,6 @@ export default function Home() {
             <div className="space-x-4 pt-4">
               <Button size="lg" className="text-lg px-8" asChild>
                 <Link href="/research">Our Research</Link>
-              </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 bg-black/30 hover:bg-black/50" asChild>
-                <Link href="/contact">Contact Us</Link>
               </Button>
             </div>
           </div>

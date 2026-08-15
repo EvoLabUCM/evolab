@@ -7,7 +7,7 @@ export function MainNav() {
       <div className="container flex h-16 items-center">
         <Link href="/" className="flex items-center space-x-2">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-voYJYf0ta7Lq6hK3vdl0tyu2v7aJVf.png"
+            src="/images/EVOLAB_LOGO.png"
             alt="EvoLab Logo"
             width={40}
             height={40}
@@ -32,9 +32,6 @@ export function MainNav() {
           </Link>
           <Link href="/media" className="text-sm font-medium transition-colors hover:text-primary whitespace-nowrap">
             Media
-          </Link>
-<Link href="/contact" className="text-sm font-medium transition-colors hover:text-primary whitespace-nowrap">
-            Contact
           </Link>
         </nav>
       </div>
