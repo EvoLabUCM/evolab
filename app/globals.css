@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-  EvoLab — "Stay Human"
-  ------------------------------------------------------------------
-  The design system stages one tension on every page: a warm, humanist
-  serif voice sitting on top of a precise machine substrate. Serif for
-  what we believe, mono for what we measure, sans for everything in
-  between. Gold on ink, drawn from the lab mark and UC Merced.
-*/
 
 @layer base {
   :root {
