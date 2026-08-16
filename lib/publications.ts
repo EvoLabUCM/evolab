@@ -539,18 +539,6 @@ export const researchCategories = {
       },
     ],
   },
-  other: {
-    title: "Other Research Areas",
-    description: "Misc",
-    publications: [
-      {
-        citation:
-          "Holbrook, C., & Sousa, P. (2013). Supernatural beliefs, unconscious threat, and judgment bias in Tibetan Buddhists. Journal of Cognition and Culture, 13, 33-56.",
-        link: "http://colinholbrook.com/Unconscious Vigilance Tibetan Buddhism JCC Holbrook Sousa 2012.pdf",
-        year: 2013,
-      },
-    ],
-  },
 } as const
 
 export type ResearchCategory = keyof typeof researchCategories

@@ -2,34 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+  EvoLab — "Stay Human"
+  ------------------------------------------------------------------
+  The design system stages one tension on every page: a warm, humanist
+  serif voice sitting on top of a precise machine substrate. Serif for
+  what we believe, mono for what we measure, sans for everything in
+  between. Gold on ink, drawn from the lab mark and UC Merced.
+*/
+
 @layer base {
   :root {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 0 85% 60%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 0 85% 60%;
-    --radius: 0.5rem;
+    /* Ground */
+    --background: 260 18% 3%; /* #08070A near-black ink   */
+    --foreground: 40 26% 93%; /* #F2EFE9 warm bone white  */
 
-    /* Gradient Colors */
-    --gradient-1: #0d0d0d;
-    --gradient-2: #1a1a2e;
-    --gradient-3: #420a09;
-    --gradient-4: #2d1b40;
+    /* Raised surfaces */
+    --surface: 264 15% 7%;
+    --surface-raised: 264 14% 10%;
+    --card: 264 15% 7%;
+    --card-foreground: 40 26% 93%;
+    --popover: 264 15% 8%;
+    --popover-foreground: 40 26% 93%;
+
+    /* Signal */
+    --primary: 43 79% 58%; /* #E8B93F lab gold          */
+    --primary-foreground: 260 18% 4%;
+    --gold-deep: 41 69% 43%;
+
+    /* Structure */
+    --secondary: 247 46% 35%; /* #3B3184 logo indigo       */
+    --secondary-foreground: 40 26% 93%;
+    --accent: 247 46% 35%;
+    --accent-foreground: 40 26% 93%;
+
+    --muted: 264 12% 11%;
+    --muted-foreground: 41 8% 58%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 40 26% 93%;
+
+    --border: 270 4% 12%;
+    --input: 270 4% 14%;
+    --ring: 43 79% 58%;
+
+    --radius: 0.25rem;
   }
 }
 
@@ -41,131 +58,193 @@
   html {
     min-height: 100vh;
     -webkit-tap-highlight-color: transparent;
+    scrollbar-color: hsl(var(--primary) / 0.35) transparent;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
     margin: 0;
     min-height: 100vh;
-    position: relative;
-    background: linear-gradient(-45deg, var(--gradient-1), var(--gradient-2), var(--gradient-3), var(--gradient-4));
-    background-size: 400% 400%;
-    animation: gradientShift 7s ease infinite;
     overflow-x: hidden;
+    font-feature-settings: "kern", "liga", "cv11";
   }
 
-  /* Overlay effect */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
-    pointer-events: none;
-    z-index: 1;
+  ::selection {
+    background: hsl(var(--primary) / 0.85);
+    color: hsl(var(--primary-foreground));
   }
 
-  /* Noise texture overlay */
-  body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.02;
-    pointer-events: none;
-    z-index: 2;
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 3px;
   }
-}
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
   }
-  50% {
-    background-position: 100% 50%;
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
   }
-  100% {
-    background-position: 0% 50%;
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.3);
+    border: 3px solid hsl(var(--background));
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.55);
   }
 }
 
-/* Make sure content appears above the overlays */
-main,
-header,
-footer {
-  position: relative;
-  z-index: 10;
-}
-
-/* Update header background for better contrast */
-header {
-  background: rgba(13, 13, 13, 0.8) !important;
-  backdrop-filter: blur(10px);
-}
-
-/* Update footer background for better contrast */
-footer {
-  background: rgba(13, 13, 13, 0.8);
-  backdrop-filter: blur(10px);
-}
-
-/* Card styling updates for better contrast */
-.card {
-  background: rgba(26, 26, 46, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Section background updates */
-section.bg-muted {
-  background: rgba(13, 13, 13, 0.5);
-  backdrop-filter: blur(10px);
-}
-
-/* Make text more readable against video background */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-p {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* Add a subtle glow effect to important UI elements */
-.card:hover,
-.btn-primary:hover {
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
-}
-
-/* Mobile optimizations */
-@media (max-width: 640px) {
+@layer components {
+  /*
+    Page gutter. Fluid to 1400px, then capped, with a padding ramp that the
+    built-in Tailwind container plugin can't express alongside a capped width.
+  */
   .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
   }
 
-  h1 {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
+  @media (min-width: 640px) {
+    .container {
+      padding-inline: 2rem;
+    }
   }
 
-  h2 {
-    font-size: 1.5rem;
-    line-height: 2rem;
+  @media (min-width: 1024px) {
+    .container {
+      padding-inline: 3rem;
+    }
   }
 
-  p {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+  /*
+    Display voice. High-contrast serif — the human half of the system.
+    Used for page titles and section headlines only. Never uppercased.
+  */
+  .font-display {
+    font-family: var(--font-display), Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+  }
+
+  /*
+    Caption voice. Plain sans, sentence case, one step down from body copy.
+    Used for eyebrows, indices, counts, meta and spec labels.
+  */
+  .label {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    font-weight: 500;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .label-gold {
+    @apply label;
+    color: hsl(var(--primary));
+  }
+
+  /* Hairline rule that fades out — used to extend eyebrows across a row. */
+  .rule {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      hsl(var(--foreground) / 0.18),
+      hsl(var(--foreground) / 0)
+    );
+  }
+
+  /*
+    Corner brackets. A viewfinder/HUD motif that frames the hero and
+    the instrument cards, reading as calibration marks rather than decoration.
+  */
+  .bracket::before,
+  .bracket::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: hsl(var(--primary) / 0.5);
+    transition: border-color 0.3s ease;
+  }
+  .bracket::before {
+    top: -1px;
+    left: -1px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+  }
+  .bracket::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+  }
+  .group:hover .bracket::before,
+  .group:hover .bracket::after {
+    border-color: hsl(var(--primary));
+  }
+
+  /* Panel — the standard raised surface across the site. */
+  .panel {
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--surface-raised) / 0.85),
+      hsl(var(--surface) / 0.85)
+    );
+    border: 1px solid hsl(var(--foreground) / 0.08);
+    backdrop-filter: blur(12px);
+  }
+
+  /* Underline that draws in from the left on hover. */
+  .link-draw {
+    background-image: linear-gradient(hsl(var(--primary)), hsl(var(--primary)));
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-draw:hover {
+    background-size: 100% 1px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Fine grid, used behind section bands to suggest a measured space. */
+  .bg-grid {
+    background-image: linear-gradient(
+        hsl(var(--foreground) / 0.028) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.028) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  }
+}
+
+/* Entrance animation, opt-in per element via .reveal + data-visible. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal[data-visible="true"] {
+    opacity: 1;
+    transform: none;
   }
 }

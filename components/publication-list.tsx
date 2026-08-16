@@ -1,84 +1,119 @@
 "use client"
-import { ExternalLink } from "lucide-react"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Button } from "@/components/ui/button"
-import { PDFPreviewDialog } from "@/components/pdf-preview-dialog"
-import { useState } from "react"
 
-interface Publication {
-  citation: string
-  link?: string
-  year: number
-}
+import { ArrowUpRight } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { parseCitation, type Publication } from "@/lib/citation"
 
 interface PublicationListProps {
-  publications: Publication[]
+  publications: readonly Publication[]
+}
+
+function groupByYear(publications: readonly Publication[]): [number, Publication[]][] {
+  const byYear = new Map<number, Publication[]>()
+
+  for (const publication of publications) {
+    const bucket = byYear.get(publication.year)
+    if (bucket) {
+      bucket.push(publication)
+    } else {
+      byYear.set(publication.year, [publication])
+    }
+  }
+
+  return [...byYear.entries()].sort(([a], [b]) => b - a)
+}
+
+function PublicationRow({ publication }: { publication: Publication }) {
+  const { authors, title, source } = parseCitation(publication.citation)
+
+  if (!publication.link) {
+    return (
+      <div className="grid gap-2 py-6 md:grid-cols-12 md:gap-8">
+        <div className="space-y-2 md:col-span-11">
+          <h4 className="text-balance font-display text-xl leading-snug md:text-2xl">
+            {title}
+          </h4>
+          {authors && (
+            <p className="text-sm leading-relaxed text-muted-foreground">{authors}</p>
+          )}
+          {source && (
+            <p className="text-xs leading-relaxed text-foreground/60">{source}</p>
+          )}
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <a
+      href={publication.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group grid gap-2 py-6 md:grid-cols-12 md:gap-8"
+    >
+      <div className="space-y-2 md:col-span-11">
+        <h4 className="text-balance font-display text-xl leading-snug transition-colors group-hover:text-primary md:text-2xl">
+          {title}
+        </h4>
+        {authors && (
+          <p className="text-sm leading-relaxed text-muted-foreground">{authors}</p>
+        )}
+        {source && (
+          <p className="text-xs leading-relaxed text-foreground/60">{source}</p>
+        )}
+      </div>
+      <div className="flex items-start md:col-span-1 md:justify-end">
+        <span className="inline-flex h-9 w-9 items-center justify-center border border-foreground/15 text-muted-foreground transition-colors group-hover:border-primary group-hover:text-primary">
+          <ArrowUpRight className="h-4 w-4" />
+          <span className="sr-only">Read the paper</span>
+        </span>
+      </div>
+    </a>
+  )
 }
 
 export function PublicationList({ publications }: PublicationListProps) {
-  const [selectedPublication, setSelectedPublication] = useState<Publication | null>(null)
+  const years = groupByYear(publications)
 
-  // Sort years in descending order (newest to oldest)
-  const publicationsByYear = publications.reduce(
-    (acc, pub) => {
-      const year = pub.year
-      if (!acc[year]) {
-        acc[year] = []
-      }
-      acc[year].push(pub)
-      return acc
-    },
-    {} as Record<number, Publication[]>,
-  )
-
-  // Get years and sort them in descending order
-  const sortedYears = Object.keys(publicationsByYear)
-    .map(Number)
-    .sort((a, b) => b - a)
-
+  // Every year starts open: Radix unmounts collapsed content, so anything
+  // closed by default would be missing from the served HTML entirely.
   return (
-    <>
-      <Accordion type="single" collapsible className="w-full space-y-4">
-        {sortedYears.map((year) => (
-          <AccordionItem key={year} value={year.toString()} className="border rounded-lg bg-card/50 backdrop-blur-sm">
-            <AccordionTrigger className="px-4 hover:no-underline">
-              <h2 className="text-xl font-semibold">{year}</h2>
-            </AccordionTrigger>
-            <AccordionContent>
-              <div className="px-4 pb-4 space-y-4">
-                {publicationsByYear[year].map((publication, index) => (
-                  <div key={index} className="space-y-2">
-                    <button
-                      onClick={() => setSelectedPublication(publication)}
-                      className="text-sm md:text-base text-left hover:text-primary transition-colors"
-                    >
-                      {publication.citation}
-                    </button>
-                    {publication.link && (
-                      <Button variant="link" className="h-auto p-0" asChild>
-                        <a
-                          href={publication.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-primary hover:text-primary/80"
-                        >
-                          View Publication <ExternalLink className="h-4 w-4" />
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-
-      <PDFPreviewDialog
-        isOpen={!!selectedPublication}
-        onClose={() => setSelectedPublication(null)}
-        title={selectedPublication?.citation || ""}
-      />
-    </>
+    <Accordion
+      type="multiple"
+      defaultValue={years.map(([year]) => String(year))}
+      className="w-full border-t border-foreground/10"
+    >
+      {years.map(([year, yearPublications]) => (
+        <AccordionItem
+          key={year}
+          value={String(year)}
+          className="border-b border-foreground/10"
+        >
+          <AccordionTrigger className="group py-6 hover:no-underline">
+            <span className="flex flex-1 items-baseline gap-5 text-left">
+              <span className="font-display text-4xl leading-none tabular-nums transition-colors group-hover:text-primary md:text-5xl">
+                {year}
+              </span>
+              <span className="label tabular-nums">
+                {yearPublications.length}{" "}
+                {yearPublications.length === 1 ? "Paper" : "Papers"}
+              </span>
+            </span>
+          </AccordionTrigger>
+          <AccordionContent className="pb-6">
+            <div className="divide-y divide-foreground/5 border-t border-foreground/5">
+              {yearPublications.map((publication) => (
+                <PublicationRow key={publication.citation} publication={publication} />
+              ))}
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      ))}
+    </Accordion>
   )
 }
