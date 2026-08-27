@@ -1,44 +1,53 @@
-import type { Metadata } from "next"
-import { ArrowUpRight } from "lucide-react"
-import { PageHeader } from "@/components/page-header"
 import { PublicationList } from "@/components/publication-list"
-import { Reveal } from "@/components/reveal"
 import { researchCategories } from "@/lib/publications"
-import { flattenPublications } from "@/lib/citation"
-
-const SCHOLAR_URL = "https://scholar.google.com/citations?user=uYopsrAAAAAJ&hl=en"
-
-export const metadata: Metadata = {
-  title: "Publications",
-  description:
-    "Peer-reviewed publications from EvoLab on human-AI interaction, trust and overtrust, threat appraisal, morality, and group cognition.",
-}
+import { Button } from "@/components/ui/button"
+import { ExternalLink, BookOpen } from "lucide-react"
 
 export default function PublicationsPage() {
-  const publications = flattenPublications(researchCategories)
+  // Combine all publications from all categories and remove duplicates
+  const allPublications = Object.values(researchCategories).reduce(
+    (acc, category) => {
+      return [...acc, ...category.publications]
+    },
+    [] as Array<{ citation: string; link?: string; year: number }>,
+  )
+
+  // Remove duplicates based on citation
+  const uniquePublications = allPublications.filter(
+    (publication, index, self) => index === self.findIndex((p) => p.citation === publication.citation),
+  )
 
   return (
-    <main id="main" className="flex-1">
-      <PageHeader
-        title="Publications"
-        description="The complete peer-reviewed record from the lab and its collaborators, grouped by year. Every entry links out to the paper where one is available."
-      >
-        <a
-          href={SCHOLAR_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex h-12 items-center gap-2.5 border border-foreground/25 px-6 text-sm font-medium tracking-wide transition-colors hover:border-primary hover:text-primary"
-        >
-          Google Scholar profile
-          <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-        </a>
-      </PageHeader>
-
-      <section className="py-16 md:py-24">
-        <div className="container">
-          <Reveal>
-            <PublicationList publications={publications} />
-          </Reveal>
+    <main className="flex-1">
+      <section className="w-full py-12 md:py-24 lg:py-32">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none animate-glitch">
+                Publications
+              </h1>
+              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+                Browse our complete collection of research publications
+              </p>
+              <div className="flex justify-center mt-6">
+                <Button variant="outline" size="lg" className="flex items-center gap-2" asChild>
+                  <a
+                    href="https://scholar.google.com/citations?user=uYopsrAAAAAJ&hl=en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2"
+                  >
+                    <BookOpen className="h-5 w-5" />
+                    View Google Scholar Profile
+                    <ExternalLink className="h-4 w-4 ml-1" />
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
+          <div className="mt-16">
+            <PublicationList publications={uniquePublications} />
+          </div>
         </div>
       </section>
     </main>
