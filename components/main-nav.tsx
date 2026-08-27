@@ -56,99 +56,36 @@ export function MainNav() {
   const isSolid = isScrolled || !isTransparentAtTop || isMenuOpen
 
   return (
-    <>
-      <header
-        className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-          isSolid
-            ? "border-b border-foreground/10 bg-background/85 backdrop-blur-xl"
-            : "border-b border-transparent bg-transparent",
-        )}
-      >
-        <div className="container flex h-[4.5rem] items-center gap-6 md:h-20">
-          <Link href="/" className="group flex items-center gap-3" aria-label="EvoLab home">
-            <Image
-              src="/images/EVOLAB_LOGO.png"
-              alt=""
-              width={56}
-              height={56}
-              className="h-11 w-11 md:h-12 md:w-12"
-            />
-            <span className="font-display text-3xl leading-none transition-colors group-hover:text-primary md:text-4xl">
-              EvoLab
-            </span>
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-16 items-center">
+        <Link href="/" className="flex items-center space-x-2">
+          <Image
+            src="/images/EVOLAB_LOGO.png"
+            alt="EvoLab Logo"
+            width={40}
+            height={40}
+            className="w-10 h-10"
+          />
+          <span className="font-bold bg-gradient-to-r from-[#E0B872] to-[#8B6D3C] bg-clip-text text-transparent">
+            EvoLab
+          </span>
+        </Link>
+        <nav className="ml-auto flex gap-6 overflow-x-auto md:overflow-visible">
+          <Link href="/people" className="text-sm font-medium transition-colors hover:text-primary whitespace-nowrap">
+            People
           </Link>
-
-          <nav className="ml-auto hidden items-center gap-8 md:flex">
-            {navLinks.map((link) => {
-              const active = isActive(pathname, link.href)
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  aria-current={active ? "page" : undefined}
-                  className={cn(
-                    "relative py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground",
-                    active && "text-primary hover:text-primary",
-                  )}
-                >
-                  {link.label}
-                  <span
-                    className={cn(
-                      "absolute -bottom-px left-0 h-px bg-primary transition-all duration-300",
-                      active ? "w-full" : "w-0",
-                    )}
-                    aria-hidden="true"
-                  />
-                </Link>
-              )
-            })}
-          </nav>
-
-          <button
-            type="button"
-            onClick={() => setIsMenuOpen((open) => !open)}
-            className="ml-auto flex h-10 w-10 items-center justify-center text-foreground transition-colors hover:text-primary md:hidden"
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-menu"
+          <Link href="/research" className="text-sm font-medium transition-colors hover:text-primary whitespace-nowrap">
+            Research
+          </Link>
+          <Link
+            href="/publications"
+            className="text-sm font-medium transition-colors hover:text-primary whitespace-nowrap"
           >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
-      </header>
-
-      {/* Mobile sheet */}
-      <div
-        id="mobile-menu"
-        className={cn(
-          "fixed inset-0 z-40 bg-background/98 backdrop-blur-xl transition-all duration-300 md:hidden",
-          isMenuOpen
-            ? "pointer-events-auto opacity-100"
-            : "pointer-events-none opacity-0",
-        )}
-        aria-hidden={!isMenuOpen}
-      >
-        <nav className="container flex h-full flex-col justify-center gap-2 pb-16">
-          {navLinks.map((link, index) => {
-            const active = isActive(pathname, link.href)
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                tabIndex={isMenuOpen ? 0 : -1}
-                aria-current={active ? "page" : undefined}
-                className={cn(
-                  "group flex items-baseline border-b border-foreground/10 py-5 transition-all duration-500",
-                  active ? "text-primary" : "text-foreground hover:text-primary",
-                  isMenuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
-                )}
-                style={{ transitionDelay: isMenuOpen ? `${80 + index * 60}ms` : "0ms" }}
-              >
-                <span className="font-display text-4xl leading-none">{link.label}</span>
-              </Link>
-            )
-          })}
+            Publications
+          </Link>
+          <Link href="/media" className="text-sm font-medium transition-colors hover:text-primary whitespace-nowrap">
+            Media
+          </Link>
         </nav>
       </div>
     </>
