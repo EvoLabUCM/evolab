@@ -1,164 +1,130 @@
 "use client"
-
 import { useState } from "react"
 import Image from "next/image"
-import { ArrowUpRight, ChevronDown, FileText, GraduationCap } from "lucide-react"
-import { hasPhoto, initialsOf, type Person } from "@/lib/people"
+import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { ExternalLink, ChevronDown, ChevronUp, FileText, GraduationCap } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 
-const BIO_COLLAPSE_THRESHOLD = 220
+interface PersonCardProps {
+  name: string
+  role: string
+  image: string
+  description: string
+  portfolioUrl?: string
+  cvUrl?: string
+  expectedGraduation?: string
+}
 
-function Portrait({ person, className }: { person: Person; className?: string }) {
-  if (hasPhoto(person.image)) {
-    return (
-      <div className={cn("relative overflow-hidden bg-surface", className)}>
+export function PersonCard({
+  name,
+  role,
+  image,
+  description,
+  portfolioUrl,
+  cvUrl,
+  expectedGraduation,
+}: PersonCardProps) {
+  const [isExpanded, setIsExpanded] = useState(false)
+
+  return (
+    <Card
+      className={cn(
+        "overflow-hidden transition-all duration-300 cursor-pointer group",
+        isExpanded ? "bg-card/90" : "hover:border-primary/50",
+      )}
+      onClick={() => setIsExpanded(!isExpanded)}
+    >
+      <div className="aspect-square relative">
         <Image
-          src={person.image}
-          alt={person.name}
+          src={image || "/images/placeholder.png"}
+          alt={name}
           fill
-          sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          className={cn(
+            "object-cover transition-all duration-500",
+            isExpanded ? "scale-105 brightness-90" : "group-hover:scale-105",
+          )}
         />
         <div
-          className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"
-          aria-hidden="true"
-        />
-      </div>
-    )
-  }
-
-  // Typographic stand-in — reads as a deliberate plate rather than a missing image.
-  return (
-    <div
-      className={cn(
-        "relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-surface-raised to-background",
-        className,
-      )}
-      aria-hidden="true"
-    >
-      <div className="absolute inset-0 bg-grid opacity-60" />
-      <span className="relative font-display text-6xl leading-none text-primary/80 transition-transform duration-700 group-hover:scale-105 md:text-7xl">
-        {initialsOf(person.name)}
-      </span>
-    </div>
-  )
-}
-
-function PersonLinks({ person }: { person: Person }) {
-  if (!person.portfolioUrl && !person.cvUrl) return null
-
-  return (
-    <div className="flex flex-wrap gap-x-6 gap-y-3 pt-1">
-      {person.portfolioUrl && (
-        <a
-          href={person.portfolioUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group/link inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-primary"
-        >
-          <span className="link-draw">Portfolio</span>
-          <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
-        </a>
-      )}
-      {person.cvUrl && (
-        <a
-          href={person.cvUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group/link inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-primary"
-        >
-          <FileText className="h-3.5 w-3.5" />
-          <span className="link-draw">Curriculum Vitae</span>
-        </a>
-      )}
-    </div>
-  )
-}
-
-function PersonMeta({ person }: { person: Person }) {
-  return (
-    <div className="space-y-2">
-      <p className="label-gold">{person.role}</p>
-      {person.expectedGraduation && (
-        <p className="flex items-center gap-2 text-xs text-muted-foreground">
-          <GraduationCap className="h-3.5 w-3.5" />
-          <span>Expected {person.expectedGraduation}</span>
-        </p>
-      )}
-    </div>
-  )
-}
-
-/** Wide layout used for the PI and the lab managers. */
-export function FeaturedPersonCard({ person }: { person: Person }) {
-  return (
-    <article className="group grid gap-8 border border-foreground/10 bg-background p-6 transition-colors duration-500 hover:bg-surface md:grid-cols-12 md:gap-10 md:p-8">
-      <Portrait person={person} className="aspect-square md:col-span-4 lg:col-span-3" />
-
-      <div className="flex flex-col gap-5 md:col-span-8 lg:col-span-9">
-        <div className="space-y-3">
-          <h3 className="font-display text-4xl leading-none transition-colors group-hover:text-primary md:text-5xl">
-            {person.name}
-          </h3>
-          <PersonMeta person={person} />
-        </div>
-
-        <p className="max-w-2xl whitespace-pre-line text-pretty text-sm leading-relaxed text-muted-foreground">
-          {person.description}
-        </p>
-
-        <PersonLinks person={person} />
-      </div>
-    </article>
-  )
-}
-
-export function PersonCard({ person }: { person: Person }) {
-  const [isExpanded, setIsExpanded] = useState(false)
-  const isLongBio = person.description.length > BIO_COLLAPSE_THRESHOLD
-
-  return (
-    <article className="group flex h-full flex-col border border-foreground/10 bg-background transition-colors duration-500 hover:bg-surface">
-      <Portrait person={person} className="aspect-[4/3]" />
-
-      <div className="flex flex-1 flex-col gap-4 p-6">
-        <div className="space-y-3">
-          <h3 className="font-display text-3xl leading-none transition-colors group-hover:text-primary">
-            {person.name}
-          </h3>
-          <PersonMeta person={person} />
-        </div>
-
-        <p
           className={cn(
-            "whitespace-pre-line text-pretty text-sm leading-relaxed text-muted-foreground",
-            isLongBio && !isExpanded && "line-clamp-3",
+            "absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-300",
+            isExpanded ? "opacity-100" : "opacity-0 group-hover:opacity-70",
           )}
-        >
-          {person.description}
-        </p>
+        />
 
-        {isLongBio && (
-          <button
-            type="button"
-            onClick={() => setIsExpanded((expanded) => !expanded)}
-            aria-expanded={isExpanded}
-            className="label inline-flex items-center gap-2 self-start transition-colors hover:text-primary"
-          >
-            {isExpanded ? "Less" : "Full bio"}
-            <ChevronDown
-              className={cn(
-                "h-3.5 w-3.5 transition-transform duration-300",
-                isExpanded && "rotate-180",
-              )}
-            />
-          </button>
-        )}
-
-        <div className="mt-auto">
-          <PersonLinks person={person} />
+        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white">
+          <h3 className="font-bold text-base sm:text-lg">{name}</h3>
+          <p className="text-xs sm:text-sm text-white/90">{role}</p>
         </div>
+
+        <button
+          className={cn(
+            "absolute top-2 right-2 sm:top-3 sm:right-3 bg-black/50 rounded-full p-1 transition-all",
+            isExpanded ? "opacity-100" : "opacity-0 group-hover:opacity-100",
+          )}
+          onClick={(e) => {
+            e.stopPropagation()
+            setIsExpanded(!isExpanded)
+          }}
+          aria-label={isExpanded ? "Collapse details" : "Expand details"}
+        >
+          {isExpanded ? (
+            <ChevronUp className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
+          ) : (
+            <ChevronDown className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
+          )}
+        </button>
       </div>
-    </article>
+
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <CardContent className="p-3 sm:p-4">
+              {expectedGraduation && (
+                <div className="flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground mb-3">
+                  <GraduationCap className="h-3.5 w-3.5" />
+                  <span>Expected Graduation: {expectedGraduation}</span>
+                </div>
+              )}
+              <p className="text-xs sm:text-sm text-muted-foreground mb-4 whitespace-pre-line">{description}</p>
+              <div className="flex flex-col gap-2">
+                {portfolioUrl && (
+                  <Button variant="outline" size="sm" className="w-full text-xs sm:text-sm" asChild>
+                    <a
+                      href={portfolioUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center justify-center gap-2"
+                    >
+                      View Portfolio <ExternalLink className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                    </a>
+                  </Button>
+                )}
+                {cvUrl && (
+                  <Button variant="outline" size="sm" className="w-full text-xs sm:text-sm" asChild>
+                    <a
+                      href={cvUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center justify-center gap-2"
+                    >
+                      View Curriculum Vitae <FileText className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                    </a>
+                  </Button>
+                )}
+              </div>
+            </CardContent>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </Card>
   )
 }

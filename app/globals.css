@@ -4,32 +4,26 @@
 
 @layer base {
   :root {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --background: 42 50% 96%;
+    --foreground: 30 8% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 30 8% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 8% 15%;
     --primary: 0 85% 60%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 42 30% 91%;
+    --secondary-foreground: 30 8% 15%;
+    --muted: 42 30% 91%;
+    --muted-foreground: 30 6% 38%;
+    --accent: 42 30% 91%;
+    --accent-foreground: 30 8% 15%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
+    --border: 42 20% 86%;
+    --input: 42 20% 86%;
     --ring: 0 85% 60%;
     --radius: 0.5rem;
-
-    /* Gradient Colors */
-    --gradient-1: #0d0d0d;
-    --gradient-2: #1a1a2e;
-    --gradient-3: #420a09;
-    --gradient-4: #2d1b40;
   }
 }
 
@@ -48,26 +42,10 @@
     margin: 0;
     min-height: 100vh;
     position: relative;
-    background: linear-gradient(-45deg, var(--gradient-1), var(--gradient-2), var(--gradient-3), var(--gradient-4));
-    background-size: 400% 400%;
-    animation: gradientShift 7s ease infinite;
     overflow-x: hidden;
   }
 
-  /* Overlay effect */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  /* Noise texture overlay */
+  /* Paper grain */
   body::after {
     content: "";
     position: fixed;
@@ -76,25 +54,13 @@
     right: 0;
     bottom: 0;
     background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.02;
+    opacity: 0.025;
     pointer-events: none;
     z-index: 2;
   }
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Make sure content appears above the overlays */
+/* Make sure content appears above the grain overlay */
 main,
 header,
 footer {
@@ -102,49 +68,12 @@ footer {
   z-index: 10;
 }
 
-/* Update header background for better contrast */
 header {
-  background: rgba(13, 13, 13, 0.8) !important;
-  backdrop-filter: blur(10px);
+  background: #3b3183;
 }
 
-/* Update footer background for better contrast */
 footer {
-  background: rgba(13, 13, 13, 0.8);
-  backdrop-filter: blur(10px);
-}
-
-/* Card styling updates for better contrast */
-.card {
-  background: rgba(26, 26, 46, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Section background updates */
-section.bg-muted {
-  background: rgba(13, 13, 13, 0.5);
-  backdrop-filter: blur(10px);
-}
-
-/* Make text more readable against video background */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-p {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* Add a subtle glow effect to important UI elements */
-.card:hover,
-.btn-primary:hover {
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+  background: #3b3183;
 }
 
 /* Mobile optimizations */

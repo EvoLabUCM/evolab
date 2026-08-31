@@ -1,94 +1,84 @@
-import Link from "next/link"
-import { ArrowRight, ArrowUpRight } from "lucide-react"
-import { researchCategories } from "@/lib/publications"
-import { flattenPublications, parseCitation } from "@/lib/citation"
-import { SectionHeading } from "@/components/section-heading"
-import { Reveal } from "@/components/reveal"
+"use client"
 
-const SCHOLAR_URL = "https://scholar.google.com/citations?user=uYopsrAAAAAJ&hl=en"
+import { ExternalLink } from "lucide-react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import { researchCategories } from "@/lib/publications"
+
+// APA citations read "Authors (Year). Title. Venue, vol." so splitting on the
+// first period yields the lead author's initial, not the title.
+function paperTitle(citation: string) {
+  const match = citation.match(/\(\d{4}[^)]*\)\.\s*(.+?)\.\s/)
+  return match ? `${match[1]}.` : citation
+}
 
 export function RecentPublications() {
-  const recent = flattenPublications(researchCategories).slice(0, 4)
+  // Get all publications and sort by year in descending order (newest first)
+  const allPublications = Object.values(researchCategories)
+    .reduce(
+      (acc, category) => {
+        return [...acc, ...category.publications]
+      },
+      [] as Array<{ citation: string; link?: string; year: number }>,
+    )
+    .sort((a, b) => b.year - a.year)
+
+  // Remove duplicates and get the 3 most recent
+  const recentPublications = allPublications
+    .filter((publication, index, self) => index === self.findIndex((p) => p.citation === publication.citation))
+    .slice(0, 3)
 
   return (
-    <>
-      <SectionHeading
-        title="Recent work"
-        description="Peer-reviewed findings from the lab and its collaborators, most recent first."
-        action={
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
-            <Link
-              href="/publications"
-              className="group inline-flex items-center gap-2 border-b border-foreground/25 pb-2 text-sm transition-colors hover:border-primary hover:text-primary"
-            >
-              All publications
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
+    <div className="space-y-8">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <h2 className="text-2xl font-bold text-[#2d3871] tracking-tight">Recent Publications</h2>
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4">
+          <Button size="sm" className="whitespace-nowrap bg-[#ffce42] text-black hover:bg-[#ffce42]/90" asChild>
+            <Link href="/publications">View All Publications</Link>
+          </Button>
+          <Button size="sm" className="flex items-center gap-2 whitespace-nowrap bg-[#ffce42] text-black hover:bg-[#ffce42]/90" asChild>
             <a
-              href={SCHOLAR_URL}
+              href="https://scholar.google.com/citations?user=uYopsrAAAAAJ&hl=en"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 border-b border-transparent pb-2 text-sm text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+              className="flex items-center gap-2"
             >
               Google Scholar
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <ExternalLink className="h-4 w-4" />
             </a>
-          </div>
-        }
-      />
-
-      <Reveal className="mt-16">
-        <ol className="border-t border-foreground/10">
-          {recent.map((publication) => {
-            const { authors, title, source } = parseCitation(publication.citation)
-            const Wrapper = publication.link ? "a" : "div"
-
-            return (
-              <li key={publication.citation} className="border-b border-foreground/10">
-                <Wrapper
-                  {...(publication.link
-                    ? {
-                        href: publication.link,
-                        target: "_blank",
-                        rel: "noopener noreferrer",
-                      }
-                    : {})}
-                  className="group grid gap-4 py-8 transition-colors md:grid-cols-12 md:gap-8"
-                >
-                  <div className="flex items-center gap-4 md:col-span-2 md:block">
-                    <span className="label-gold tabular-nums">{publication.year}</span>
-                  </div>
-
-                  <div className="space-y-3 md:col-span-9">
-                    <h3 className="text-balance font-display text-2xl leading-snug transition-colors group-hover:text-primary md:text-3xl">
-                      {title}
-                    </h3>
-                    {authors && (
-                      <p className="text-sm leading-relaxed text-muted-foreground">
-                        {authors}
-                      </p>
-                    )}
-                    {source && (
-                      <p className="text-xs leading-relaxed text-foreground/60">
-                        {source}
-                      </p>
-                    )}
-                  </div>
-
-                  {publication.link && (
-                    <div className="flex items-start md:col-span-1 md:justify-end">
-                      <span className="inline-flex h-9 w-9 items-center justify-center border border-foreground/15 text-muted-foreground transition-colors group-hover:border-primary group-hover:text-primary">
-                        <ArrowUpRight className="h-4 w-4" />
-                        <span className="sr-only">Read the paper</span>
-                      </span>
-                    </div>
-                  )}
-                </Wrapper>
-              </li>
-            )
-          })}
-        </ol>
-      </Reveal>
-    </>
+          </Button>
+        </div>
+      </div>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {recentPublications.map((publication, index) => (
+          <Card key={index} className="flex flex-col rounded-xl border-2 border-[#2d3871] shadow-none">
+            <CardHeader>
+              <CardTitle className="line-clamp-3 text-base leading-snug text-[#2d3871] sm:text-lg">
+                {paperTitle(publication.citation)}
+              </CardTitle>
+              <CardDescription className="text-sm font-medium text-[#3b3183]">
+                Published in {publication.year}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex-1">
+              <p className="line-clamp-3 text-xs leading-relaxed text-[#3b3183] sm:text-sm">{publication.citation}</p>
+              {publication.link && (
+                <Button variant="link" className="h-auto p-0 mt-4" asChild>
+                  <a
+                    href={publication.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-[#ffce42] hover:text-[#ffce42]/80"
+                  >
+                    View Publication <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                </Button>
+              )}
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
   )
 }

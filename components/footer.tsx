@@ -1,94 +1,72 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowUpRight } from "lucide-react"
+import { ExternalLink } from "lucide-react"
 
-const explore = [
-  { href: "/people", label: "People" },
-  { href: "/research", label: "Research" },
-  { href: "/publications", label: "Publications" },
-  { href: "/media", label: "Media" },
-] as const
+const exploreLinks = [
+  { label: "People", href: "/people" },
+  { label: "Research", href: "/research" },
+  { label: "Publications", href: "/publications" },
+  { label: "Media", href: "/media" },
+]
 
-const elsewhere = [
-  {
-    href: "https://scholar.google.com/citations?user=uYopsrAAAAAJ&hl=en",
-    label: "Google Scholar",
-  },
-  { href: "http://colinholbrook.com", label: "Colin Holbrook" },
-  {
-    href: "https://cogsci.ucmerced.edu/",
-    label: "Cognitive & Information Sciences",
-  }
-] as const
+const linkClass = "text-white/85 transition-colors hover:text-[#ffce42]"
+const headingClass = "text-xs font-semibold uppercase tracking-wider text-[#ffce42]"
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-foreground/10 bg-surface/40">
-      <div className="container py-16 md:py-20">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="space-y-6 md:col-span-5">
-            <Link href="/" className="group flex items-center gap-3">
+    <footer className="border-t-4 border-[#ffce42]">
+      <div className="container py-10">
+        <div className="grid gap-8 md:grid-cols-[1fr_auto_auto] md:gap-x-12">
+          <div className="space-y-3">
+            <Link href="/" className="flex items-center gap-2">
               <Image
-                src="/images/EVOLAB_LOGO.png"
+                src="/images/Stay_Human_NoText.png"
                 alt=""
-                width={44}
-                height={44}
+                width={40}
+                height={40}
                 className="h-10 w-10"
               />
-              <span className="font-display text-2xl leading-none transition-colors group-hover:text-primary">
-                EvoLab
-              </span>
+              <span className="font-bold text-white">STAY HUMAN LAB</span>
             </Link>
-            <p className="max-w-sm text-pretty text-sm leading-relaxed text-muted-foreground">
-              A Human-Robot Interaction focused research lab at UC Merced. We use
-              humanoid robots, virtual reality, and fNIRS neuroimaging to study
-              how people give trust to artificial intelligence, and what it costs
-              when they give too much.
+            <p className="max-w-sm text-sm leading-relaxed text-white/70">
+              HRI focus Cognitive Science research lab at UC Merced ran by Dr. Colin Holbrook.
             </p>
-            <p className="font-display text-2xl text-primary">Stay Human.</p>
           </div>
 
-          <nav className="space-y-5 md:col-span-3" aria-label="Site">
-            <h2 className="label">Explore</h2>
-            <ul className="space-y-3">
-              {explore.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="link-draw text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+          <div className="space-y-3">
+            <h2 className={headingClass}>Department</h2>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a
+                  href="https://cogsci.ucmerced.edu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-start gap-1.5 ${linkClass}`}
+                >
+                  Cognitive &amp; Information Sciences
+                  <ExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+                </a>
+              </li>
             </ul>
-          </nav>
+          </div>
 
-          <nav className="space-y-5 md:col-span-4" aria-label="External">
-            <h2 className="label">Elsewhere</h2>
-            <ul className="space-y-3">
-              {elsewhere.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    <span className="link-draw">{item.label}</span>
-                    <ArrowUpRight className="h-3.5 w-3.5 opacity-50 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100" />
-                  </a>
+          <nav aria-label="Footer" className="space-y-3 md:justify-self-end md:text-right">
+            <h2 className={headingClass}>Explore</h2>
+            <ul className="space-y-2 text-sm">
+              {exploreLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className={linkClass}>
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </nav>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-foreground/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="label leading-relaxed">
-            University of California, Merced · 5200 N. Lake Rd, Merced, CA 95343
-          </p>
-          <p className="label">© {new Date().getFullYear()} EvoLab</p>
+        <div className="mt-8 flex flex-col gap-2 border-t border-white/15 pt-5 text-sm text-white/70 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Stay Human Lab.</p>
+          <p>University of California, Merced</p>
         </div>
       </div>
     </footer>
