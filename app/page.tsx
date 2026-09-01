@@ -1,4 +1,4 @@
-import { LabHighlightsReel } from "@/components/lab-highlights-reel"
+import { TechnologyGrid } from "@/components/technology-grid"
 import { ResearchAreaCard } from "@/components/research-area-card"
 import { researchAreas } from "@/lib/research-areas"
 import { NeuralNetworkBackdrop } from "@/components/neural-network-backdrop"
@@ -76,7 +76,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-12">
-            <LabHighlightsReel />
+            <TechnologyGrid />
           </div>
         </div>
       </section>
