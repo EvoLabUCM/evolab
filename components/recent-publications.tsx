@@ -64,12 +64,16 @@ export function RecentPublications() {
             <CardContent className="flex-1">
               <p className="line-clamp-3 text-xs leading-relaxed text-[#3b3183] sm:text-sm">{publication.citation}</p>
               {publication.link && (
-                <Button variant="link" className="h-auto p-0 mt-4" asChild>
+                <Button
+                  variant="link"
+                  className="mt-4 h-auto p-0"
+                  asChild
+                >
                   <a
                     href={publication.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-[#ffce42] hover:text-[#ffce42]/80"
+                    className="flex items-center gap-2"
                   >
                     View Publication <ExternalLink className="h-3.5 w-3.5" />
                   </a>

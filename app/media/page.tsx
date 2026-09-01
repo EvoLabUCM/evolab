@@ -1,4 +1,5 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { NeuralNetworkBackdrop } from "@/components/neural-network-backdrop"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Newspaper, Radio, Video } from "lucide-react"
 
@@ -164,66 +165,71 @@ const pressCoverage = [
 const getMediaTypeIcon = (type: string) => {
   switch (type) {
     case "podcast":
-      return <Radio className="h-4 w-4" />
+      return <Radio className="h-5 w-5 text-[#2d3871]" />
     case "video":
-      return <Video className="h-4 w-4" />
+      return <Video className="h-5 w-5 text-[#2d3871]" />
     case "radio":
-      return <Radio className="h-4 w-4" />
+      return <Radio className="h-5 w-5 text-[#2d3871]" />
     case "article":
     default:
-      return <Newspaper className="h-4 w-4" />
+      return <Newspaper className="h-5 w-5 text-[#2d3871]" />
   }
 }
 
 export default function MediaPage() {
   return (
     <main className="flex-1">
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6">
+      <section className="relative w-full overflow-hidden pt-4 pb-10 md:pt-6 md:pb-14 lg:pt-8 lg:pb-16">
+        <NeuralNetworkBackdrop />
+        <div className="relative container px-4 md:px-6">
           <div className="flex flex-col items-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+            <div className="space-y-3">
+              <h1 className="text-3xl font-bold tracking-tighter text-[#2d3871] sm:text-4xl md:text-5xl lg:text-6xl/none">
                 Press Coverage
               </h1>
-              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+              <p className="mx-auto max-w-[700px] text-[#3b3183] md:text-xl">
                 Selected media coverage featuring our research and discoveries
               </p>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="mt-16 space-y-6">
+      <section className="w-full pb-16 md:pb-24">
+        <div className="container px-4 md:px-6">
+          <div className="mx-auto max-w-4xl space-y-6">
             {pressCoverage.map((item, index) => (
-              <Card key={index} className="overflow-hidden">
+              <Card key={index} className="rounded-xl border-2 border-[#2d3871] bg-white shadow-none">
                 <CardHeader>
-                  <div className="flex items-start gap-2">
-                    <span className="mt-1 flex-shrink-0">{getMediaTypeIcon(item.type)}</span>
-                    <div>
-                      <CardTitle className="text-lg md:text-xl">{item.title}</CardTitle>
-                      <CardDescription className="flex flex-col gap-1 mt-2">
-                        <span>
+                  <div className="flex items-start gap-4">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-[#2d3871] bg-[#ffce42]">
+                      {getMediaTypeIcon(item.type)}
+                    </span>
+                    <div className="space-y-2">
+                      <CardTitle className="text-lg leading-snug text-[#2d3871] md:text-xl">{item.title}</CardTitle>
+                      <CardDescription className="flex flex-col gap-0.5 text-sm text-[#3b3183]">
+                        <span className="font-medium">
                           {item.author}, {item.publication}
                         </span>
                         <span>{item.date}</span>
                         {item.description && <span className="italic">{item.description}</span>}
                       </CardDescription>
+                      <Button variant="link" className="mt-1 h-auto p-0 font-medium" asChild>
+                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                          View Original{" "}
+                          {item.type === "article"
+                            ? "Article"
+                            : item.type === "podcast"
+                              ? "Podcast"
+                              : item.type === "radio"
+                                ? "Interview"
+                                : "Media"}
+                          <ExternalLink className="h-4 w-4" />
+                        </a>
+                      </Button>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <Button variant="outline" size="sm" className="flex items-center gap-2" asChild>
-                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                      View Original{" "}
-                      {item.type === "article"
-                        ? "Article"
-                        : item.type === "podcast"
-                          ? "Podcast"
-                          : item.type === "radio"
-                            ? "Interview"
-                            : "Media"}
-                      <ExternalLink className="h-4 w-4" />
-                    </a>
-                  </Button>
-                </CardContent>
               </Card>
             ))}
           </div>

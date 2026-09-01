@@ -40,9 +40,13 @@ export function PublicationList({ publications }: PublicationListProps) {
     <>
       <Accordion type="single" collapsible className="w-full space-y-4">
         {sortedYears.map((year) => (
-          <AccordionItem key={year} value={year.toString()} className="border rounded-lg bg-card/50 backdrop-blur-sm">
+          <AccordionItem
+            key={year}
+            value={year.toString()}
+            className="rounded-xl border-2 border-b-2 border-[#2d3871] bg-white"
+          >
             <AccordionTrigger className="px-4 hover:no-underline">
-              <h2 className="text-xl font-semibold">{year}</h2>
+              <h2 className="text-xl font-semibold text-[#2d3871]">{year}</h2>
             </AccordionTrigger>
             <AccordionContent>
               <div className="px-4 pb-4 space-y-4">
@@ -50,17 +54,21 @@ export function PublicationList({ publications }: PublicationListProps) {
                   <div key={index} className="space-y-2">
                     <button
                       onClick={() => setSelectedPublication(publication)}
-                      className="text-sm md:text-base text-left hover:text-primary transition-colors"
+                      className="text-left text-sm leading-relaxed text-[#3b3183] transition-colors hover:text-[#2d3871] md:text-base"
                     >
                       {publication.citation}
                     </button>
                     {publication.link && (
-                      <Button variant="link" className="h-auto p-0" asChild>
+                      <Button
+                        variant="link"
+                        className="h-auto p-0 font-medium"
+                        asChild
+                      >
                         <a
                           href={publication.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-primary hover:text-primary/80"
+                          className="flex items-center gap-2"
                         >
                           View Publication <ExternalLink className="h-4 w-4" />
                         </a>

@@ -11,7 +11,7 @@ interface PersonCardProps {
   name: string
   role: string
   image: string
-  description: string
+  description?: string
   portfolioUrl?: string
   cvUrl?: string
   expectedGraduation?: string
@@ -28,13 +28,17 @@ export function PersonCard({
 }: PersonCardProps) {
   const [isExpanded, setIsExpanded] = useState(false)
 
+  // Only Dr. Holbrook carries a bio, so most cards have nothing to reveal —
+  // don't offer an expand affordance on those.
+  const hasDetails = Boolean(description || portfolioUrl || cvUrl || expectedGraduation)
+
   return (
     <Card
       className={cn(
-        "overflow-hidden transition-all duration-300 cursor-pointer group",
-        isExpanded ? "bg-card/90" : "hover:border-primary/50",
+        "group overflow-hidden rounded-xl border-2 border-[#2d3871] bg-white shadow-none transition-all duration-300",
+        hasDetails && "cursor-pointer hover:shadow-[4px_4px_0_0_#ffce42]",
       )}
-      onClick={() => setIsExpanded(!isExpanded)}
+      onClick={() => hasDetails && setIsExpanded(!isExpanded)}
     >
       <div className="aspect-square relative">
         <Image
@@ -61,6 +65,7 @@ export function PersonCard({
         <button
           className={cn(
             "absolute top-2 right-2 sm:top-3 sm:right-3 bg-black/50 rounded-full p-1 transition-all",
+            !hasDetails && "hidden",
             isExpanded ? "opacity-100" : "opacity-0 group-hover:opacity-100",
           )}
           onClick={(e) => {
@@ -78,7 +83,7 @@ export function PersonCard({
       </div>
 
       <AnimatePresence>
-        {isExpanded && (
+        {isExpanded && hasDetails && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
@@ -87,15 +92,19 @@ export function PersonCard({
           >
             <CardContent className="p-3 sm:p-4">
               {expectedGraduation && (
-                <div className="flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground mb-3">
+                <div className="mb-3 flex items-center gap-1.5 text-xs text-[#3b3183] sm:text-sm">
                   <GraduationCap className="h-3.5 w-3.5" />
                   <span>Expected Graduation: {expectedGraduation}</span>
                 </div>
               )}
-              <p className="text-xs sm:text-sm text-muted-foreground mb-4 whitespace-pre-line">{description}</p>
+              {description && (
+                <p className="mb-4 whitespace-pre-line text-xs leading-relaxed text-[#3b3183] sm:text-sm">
+                  {description}
+                </p>
+              )}
               <div className="flex flex-col gap-2">
                 {portfolioUrl && (
-                  <Button variant="outline" size="sm" className="w-full text-xs sm:text-sm" asChild>
+                  <Button size="sm" className="w-full bg-[#ffce42] text-xs text-black hover:bg-[#ffce42]/90 sm:text-sm" asChild>
                     <a
                       href={portfolioUrl}
                       target="_blank"
@@ -108,7 +117,7 @@ export function PersonCard({
                   </Button>
                 )}
                 {cvUrl && (
-                  <Button variant="outline" size="sm" className="w-full text-xs sm:text-sm" asChild>
+                  <Button size="sm" className="w-full bg-[#ffce42] text-xs text-black hover:bg-[#ffce42]/90 sm:text-sm" asChild>
                     <a
                       href={cvUrl}
                       target="_blank"
