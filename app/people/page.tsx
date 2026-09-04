@@ -17,7 +17,8 @@ const principalInvestigator = {
 const labManager = {
   name: "Pranav Yadav",
   role: "Lab Manager",
-  image: "/images/placeholder.png"
+  image: "/images/placeholder.png",
+  portfolioUrl: "http://pranu.dev"
 }
 
 // Graduate Students
