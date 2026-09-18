@@ -1,6 +1,6 @@
 import { NeuralNetworkBackdrop } from "@/components/neural-network-backdrop"
-import { ResearchAreaCard } from "@/components/research-area-card"
-import { allResearchAreas } from "@/lib/research-areas"
+import { ResearchAreaCard, ResearchAreaMiniCard } from "@/components/research-area-card"
+import { primaryResearchAreas, secondaryResearchAreas } from "@/lib/research-areas"
 
 export default function ResearchPage() {
   return (
@@ -23,10 +23,22 @@ export default function ResearchPage() {
 
       <section className="w-full pb-16 md:pb-24">
         <div className="container px-4 md:px-6">
-          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {allResearchAreas.map((area) => (
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3">
+            {primaryResearchAreas.map((area) => (
               <ResearchAreaCard key={area.title} area={area} cta="View Publications" />
             ))}
+          </div>
+
+          <div className="mx-auto mt-12 max-w-5xl space-y-6 md:mt-16">
+            <div className="flex flex-wrap justify-center gap-4">
+              {secondaryResearchAreas.map((area) => (
+                <ResearchAreaMiniCard
+                  key={area.title}
+                  area={area}
+                  className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]"
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

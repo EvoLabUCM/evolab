@@ -144,6 +144,12 @@ export const researchCategories = {
       },
     ],
   },
+  "social-connection": {
+    title: "Social Connection",
+    description:
+      "Text Here.",
+    publications: [],
+  },
   "group-bias": {
     title: "Group Bias",
     description: "Research examining biases in group dynamics and decision-making processes.",

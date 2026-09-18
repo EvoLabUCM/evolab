@@ -10,8 +10,6 @@ export async function generateStaticParams() {
 }
 
 export default async function ResearchCategoryPage({ params }: { params: Promise<{ category: string }> }) {
-  // Next 15+ delivers route params as a Promise; reading them synchronously
-  // yields undefined and sends every category to notFound().
   const { category: slug } = await params
   const category = researchCategories[slug as keyof typeof researchCategories]
 
@@ -37,7 +35,13 @@ export default async function ResearchCategoryPage({ params }: { params: Promise
 
       <section className="w-full pb-16 md:pb-24">
         <div className="container px-4 md:px-6">
-          <PublicationList publications={category.publications} />
+          {category.publications.length > 0 ? (
+            <PublicationList publications={category.publications} />
+          ) : (
+            <p className="mx-auto max-w-[700px] rounded-xl border-2 border-dashed border-[#2d3871] bg-white p-8 text-center text-[#3b3183]">
+              Publications for this area are coming soon.
+            </p>
+          )}
         </div>
       </section>
     </main>

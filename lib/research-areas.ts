@@ -1,4 +1,4 @@
-import { Brain, Church, Heart, Plus, Scale, Shield, Users, type LucideIcon } from "lucide-react"
+import { Brain, Church, HeartHandshake, Heart, Plus, Scale, Shield, Users, type LucideIcon } from "lucide-react"
 
 export type ResearchArea = {
   title: string
@@ -7,8 +7,8 @@ export type ResearchArea = {
   href: string
 }
 
-/** The six core areas, as featured on the home page. */
-export const researchAreas: ResearchArea[] = [
+/** The three main areas, shown as featured cards */
+export const primaryResearchAreas: ResearchArea[] = [
   {
     title: "Human-AI Interaction",
     description: "Studying how humans interact with and trust AI systems in various contexts.",
@@ -21,6 +21,16 @@ export const researchAreas: ResearchArea[] = [
     icon: Heart,
     href: "/research/emotion",
   },
+  {
+    title: "Social Connection",
+    description: "Text Here.",
+    icon: HeartHandshake,
+    href: "/research/social-connection",
+  },
+]
+
+/** The remaining areas, shown as compact cards beneath the main three */
+export const secondaryResearchAreas: ResearchArea[] = [
   {
     title: "Group Bias",
     description: "Examining biases in group dynamics and decision-making processes.",
@@ -45,15 +55,13 @@ export const researchAreas: ResearchArea[] = [
     icon: Church,
     href: "/research/religion",
   },
-]
-
-/** Every area, including the catch-all, as listed on the Research Areas page. */
-export const allResearchAreas: ResearchArea[] = [
-  ...researchAreas,
   {
     title: "Other Research Areas",
-    description: "Miscelenaous",
+    description: "Miscellaneous",
     icon: Plus,
     href: "/research/other",
   },
 ]
+
+/** Every area, in display order. */
+export const allResearchAreas: ResearchArea[] = [...primaryResearchAreas, ...secondaryResearchAreas]

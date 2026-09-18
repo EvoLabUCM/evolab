@@ -1,6 +1,6 @@
 import { TechnologyGrid } from "@/components/technology-grid"
 import { ResearchAreaCard } from "@/components/research-area-card"
-import { researchAreas } from "@/lib/research-areas"
+import { primaryResearchAreas } from "@/lib/research-areas"
 import { NeuralNetworkBackdrop } from "@/components/neural-network-backdrop"
 import { RecentPublications } from "@/components/recent-publications"
 import Link from "next/link"
@@ -52,7 +52,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 pt-12 md:grid-cols-2 lg:grid-cols-3">
-            {researchAreas.map((area) => (
+            {primaryResearchAreas.map((area) => (
               <ResearchAreaCard key={area.title} area={area} cta="Learn more" />
             ))}
           </div>
