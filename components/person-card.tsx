@@ -35,7 +35,7 @@ export function PersonCard({
   return (
     <Card
       className={cn(
-        "group overflow-hidden rounded-xl border-2 border-[#2d3871] bg-white shadow-none transition-all duration-300",
+        "group self-start overflow-hidden rounded-xl border-2 border-[#2d3871] bg-white shadow-none transition-all duration-300",
         hasDetails && "cursor-pointer hover:shadow-[4px_4px_0_0_#ffce42]",
       )}
       onClick={() => hasDetails && setIsExpanded(!isExpanded)}
@@ -46,7 +46,7 @@ export function PersonCard({
           alt={name}
           fill
           className={cn(
-            "object-cover transition-all duration-500",
+            "object-cover object-top transition-all duration-500",
             isExpanded ? "scale-105 brightness-90" : "group-hover:scale-105",
           )}
         />
@@ -112,7 +112,7 @@ export function PersonCard({
                       onClick={(e) => e.stopPropagation()}
                       className="flex items-center justify-center gap-2"
                     >
-                      View Portfolio <ExternalLink className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                      View Profile <ExternalLink className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                     </a>
                   </Button>
                 )}

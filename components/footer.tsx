@@ -35,19 +35,20 @@ export function Footer() {
 
           <div className="space-y-3">
             <h2 className={headingClass}>Department</h2>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a
-                  href="https://cogsci.ucmerced.edu/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`inline-flex items-start gap-1.5 ${linkClass}`}
-                >
-                  Cognitive &amp; Information Sciences
-                  <ExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-                </a>
-              </li>
-            </ul>
+            <a
+              href="https://cogsci.ucmerced.edu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block pt-1"
+            >
+              <Image
+                src="/images/cogsci-logo.png"
+                alt="UC Merced Cognitive & Information Sciences"
+                width={1024}
+                height={325}
+                className="h-auto w-44 opacity-85 transition-opacity hover:opacity-100"
+              />
+            </a>
           </div>
 
           <nav aria-label="Footer" className="space-y-3 md:justify-self-end md:text-right">

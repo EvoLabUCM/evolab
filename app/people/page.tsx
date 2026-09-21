@@ -6,7 +6,7 @@ import { NeuralNetworkBackdrop } from "@/components/neural-network-backdrop"
 const principalInvestigator = {
   name: "Dr. Colin Holbrook",
   role: "Principal Investigator",
-  image: "/images/placeholder.png",
+  image: "/images/people/ColinHolbrook.jpg",
   description:
     "Dr. Holbrook is an Associate Professor of Cognitive and Information Sciences at UC Merced, leading research in human-AI interaction and trust during crisis situations. His work spans multiple disciplines including cognitive science, psychology, and artificial intelligence, with particular emphasis on understanding how humans assess and respond to threats in crisis situations. His current research primarily concerns human-AI interaction during crises, investigating how humans interact with and trust artificial intelligence systems in critical situations.",
   portfolioUrl: "http://colinholbrook.com",
@@ -17,28 +17,28 @@ const principalInvestigator = {
 const labManager = {
   name: "Pranav Yadav",
   role: "Lab Manager",
-  image: "/images/placeholder.png",
+  image: "/images/people/Pranav.jpg",
   portfolioUrl: "http://pranu.dev"
 }
 
 // Graduate Students
 const graduateStudents = [
   {name: "Kaylee Davis", role: "Graduate Student", image: "/images/placeholder.png"},
-  { name: "Derrick Liu", role: "Graduate Student", image: "/images/placeholder.png" },
-  { name: "Julia Ton", role: "Graduate Student", image: "/images/placeholder.png" },
+  { name: "Derrick Liu", role: "Graduate Student", image: "/images/people/Derrick.jpg", portfolioUrl: "https://theoderic.com/"},
+  { name: "Julia Ton", role: "Graduate Student", image: "/images/people/Julia.jpg", portfolioUrl: "https://www.linkedin.com/in/julia-ton/"},
 ]
 
 // Undergraduate Researchers
 const undergraduateResearchers = [
   { name: "Sahana Veldandi", role: "Undergraduate Research Assistant", image: "/images/placeholder.png" },
-  { name: "Alejandro Sigala", role: "Undergraduate Research Assistant", image: "/images/placeholder.png" },
-  { name: "Amanda Hicks", role: "Undergraduate Research Assistant", image: "/images/placeholder.png" },
+  { name: "Alejandro Sigala", role: "Undergraduate Research Assistant", image: "/images/people/Alejandro.jpeg", portfolioUrl: "https://www.linkedin.com/in/alejandro-sigala-626b7236b" },
+  { name: "Amanda Hicks", role: "Undergraduate Research Assistant", image: "/images/people/Amanda.jpg", portfolioUrl: "https://www.linkedin.com/in/amanda-hicks-0433b4434/" },
   { name: "Jayden Connolly", role: "Undergraduate Research Assistant", image: "/images/placeholder.png" },
   { name: "Jie Ru Chua", role: "Undergraduate Research Assistant", image: "/images/placeholder.png" },
-  { name: "Jasmine Kaur", role: "Undergraduate Research Assistant", image: "/images/placeholder.png" },
-  { name: "Ananya Narra", role: "Undergraduate Research Assistant", image: "/images/placeholder.png" },
-  { name: "Sofia Langer-Osuna", role: "Undergraduate Research Assistant", image: "/images/placeholder.png" },
-  { name: "Kai Patel", role: "Undergraduate Research Assistant", image: "/images/placeholder.png" },
+  { name: "Jasmine Kaur", role: "Undergraduate Research Assistant", image: "/images/people/Jasmine.jpeg", portfolioUrl: "https://www.linkedin.com/in/jasmine-kaur-ucm/" },
+  { name: "Ananya Narra", role: "Undergraduate Research Assistant", image: "/images/people/Ananya.jpeg" },
+  { name: "Sofia Langer-Osuna", role: "Undergraduate Research Assistant", image: "/images/people/Sofia.jpg", portfolioUrl: "https://github.com/slangerosuna" },
+  { name: "Kai Patel", role: "Undergraduate Research Assistant", image: "/images/people/Kai.jpg" },
 ]
 
 // Previous Members — listed by name and the role they held, no photos
