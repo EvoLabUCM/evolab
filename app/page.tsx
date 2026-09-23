@@ -6,6 +6,7 @@ import { RecentPublications } from "@/components/recent-publications"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { withBasePath } from "@/lib/utils"
 
 export default function Home() {
   return (
@@ -16,7 +17,7 @@ export default function Home() {
           <div className="flex flex-col items-center space-y-6 text-center">
             <div className="space-y-4 max-w-3xl">
               <Image
-                src="\images\Stay_Human_Text.png"
+                src={withBasePath("/images/Stay_Human_Text.png")}
                 alt="Stay Human"
                 width={400}
                 height={400}

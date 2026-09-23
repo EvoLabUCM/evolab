@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react"
 import Image from "next/image"
+import { withBasePath } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight, X, Info, Calendar, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -74,7 +75,7 @@ export function EventGallery({ title, date, location, description, credit, image
             onClick={() => openLightbox(index)}
           >
             <Image
-              src={image.src || "/placeholder.svg"}
+              src={withBasePath(image.src || "/placeholder.svg")}
               alt={image.alt}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -123,7 +124,7 @@ export function EventGallery({ title, date, location, description, credit, image
             <div className="relative w-full max-w-4xl max-h-[80vh]" onClick={(e) => e.stopPropagation()}>
               <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src={images[currentIndex].src || "/placeholder.svg"}
+                  src={withBasePath(images[currentIndex].src || "/placeholder.svg")}
                   alt={images[currentIndex].alt}
                   fill
                   className="object-contain"

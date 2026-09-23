@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight, Info, X } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn, withBasePath } from "@/lib/utils"
 import { useMediaQuery } from "@/hooks/use-media-query"
 
 const highlights = [
@@ -108,7 +108,7 @@ export function LabHighlightsReel() {
             className="absolute inset-0 w-full h-full"
           >
             <Image
-              src={currentSlide.image || "/images/placeholder.png"}
+              src={withBasePath(currentSlide.image || "/images/placeholder.png")}
               alt={currentSlide.title}
               fill
               className="object-cover"

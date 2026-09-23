@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { withBasePath } from "@/lib/utils"
 
 const technology = [
   {
@@ -56,7 +57,7 @@ export function TechnologyGrid() {
         <article key={item.id} className="overflow-hidden rounded-xl border-2 border-[#2d3871] shadow-[6px_6px_0_0_#ffce42] bg-white">
           <div className="relative aspect-square">
             <Image
-              src={item.image}
+              src={withBasePath(item.image)}
               alt={item.alt}
               fill
               className="object-cover"

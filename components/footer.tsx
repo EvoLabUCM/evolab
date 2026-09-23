@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import { withBasePath } from "@/lib/utils"
 import { ExternalLink } from "lucide-react"
 
 const exploreLinks = [
@@ -20,7 +21,7 @@ export function Footer() {
           <div className="space-y-3">
             <Link href="/" className="flex items-center gap-2">
               <Image
-                src="/images/Stay_Human_NoText.png"
+                src={withBasePath("/images/Stay_Human_NoText.png")}
                 alt=""
                 width={40}
                 height={40}
@@ -42,7 +43,7 @@ export function Footer() {
               className="inline-block pt-1"
             >
               <Image
-                src="/images/cogsci-logo.png"
+                src={withBasePath("/images/cogsci-logo.png")}
                 alt="UC Merced Cognitive & Information Sciences"
                 width={1024}
                 height={325}

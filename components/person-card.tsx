@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, ChevronDown, ChevronUp, FileText, GraduationCap } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
-import { cn } from "@/lib/utils"
+import { cn, withBasePath } from "@/lib/utils"
 
 interface PersonCardProps {
   name: string
@@ -42,7 +42,7 @@ export function PersonCard({
     >
       <div className="aspect-square relative">
         <Image
-          src={image || "/images/placeholder.png"}
+          src={withBasePath(image || "/images/placeholder.png")}
           alt={name}
           fill
           className={cn(

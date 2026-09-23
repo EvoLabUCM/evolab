@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { withBasePath } from "@/lib/utils"
 import { PersonCard } from "@/components/person-card"
 import { NeuralNetworkBackdrop } from "@/components/neural-network-backdrop"
 
@@ -70,7 +71,7 @@ export default function PeoplePage() {
             </div>
             <div className="relative aspect-[4/3] w-full max-w-xl overflow-hidden rounded-xl border-2 border-[#2d3871] shadow-[6px_6px_0_0_#ffce42] md:ml-auto">
               <Image
-                src="/images/Lab_Tabling.jpeg"
+                src={withBasePath("/images/Lab_Tabling.jpeg")}
                 alt="Lab members operating our Go2 and Bunker robots at the UCM Cognitive Science outreach table during Bobcat Day 2025"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"

@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image"
+import { withBasePath } from "@/lib/utils"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { Card } from "@/components/ui/card"
 
@@ -30,7 +31,7 @@ export function ImageCarousel() {
           <CarouselItem key={index}>
             <Card className="border-0 flex items-center justify-center">
               <Image
-                src={image.src || "/placeholder.svg"}
+                src={withBasePath(image.src || "/placeholder.svg")}
                 alt={image.alt}
                 width={600}
                 height={400}

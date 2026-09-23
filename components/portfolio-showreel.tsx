@@ -4,7 +4,7 @@ import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight, Info } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { cn, withBasePath } from "@/lib/utils"
 import { useMediaQuery } from "@/hooks/use-media-query"
 
 const images = [
@@ -122,7 +122,7 @@ export function PortfolioShowreel() {
             className="absolute inset-0 w-full h-full"
           >
             <Image
-              src={images[currentIndex].src || "/placeholder.svg"}
+              src={withBasePath(images[currentIndex].src || "/placeholder.svg")}
               alt={images[currentIndex].alt}
               fill
               className="object-contain"

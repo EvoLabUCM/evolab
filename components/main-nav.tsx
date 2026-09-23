@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import { withBasePath } from "@/lib/utils"
 
 export function MainNav() {
   return (
@@ -7,7 +8,7 @@ export function MainNav() {
       <div className="container flex h-16 items-center">
         <Link href="/" className="flex items-center space-x-2">
           <Image
-            src="/images/Stay_Human_NoText.png"
+            src={withBasePath("/images/Stay_Human_NoText.png")}
             alt="Stay Human Logo"
             width={40}
             height={40}
