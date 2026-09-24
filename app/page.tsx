@@ -70,7 +70,7 @@ export default function Home() {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter text-[#2d3871] md:text-4xl">(Some of) Our Gadgets</h2>
+              <h2 className="text-3xl font-bold tracking-tighter text-[#2d3871] md:text-4xl">Primary Gadgets</h2>
               <p className="mx-auto max-w-[700px] text-[#3b3183] md:text-xl">
                 
               </p>
