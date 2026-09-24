@@ -11,10 +11,10 @@ export default function ResearchPage() {
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-3">
               <h1 className="text-3xl font-bold tracking-tighter text-[#2d3871] sm:text-4xl md:text-5xl lg:text-6xl/none">
-                Research Areas
+                Primary Research Areas
               </h1>
               <p className="mx-auto max-w-[700px] text-[#3b3183] md:text-xl">
-                Explore our diverse research initiatives focused on understanding human-AI interactions
+                
               </p>
             </div>
           </div>
