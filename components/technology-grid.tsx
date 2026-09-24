@@ -48,16 +48,6 @@ const technology = [
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FNir%20Cap.jpg-Wg80HaqSAeoAHp5xVTEgGrZoYI4Bpk.jpeg",
     alt: "An fNIRS neuroimaging cap used to record neural activity during experiments",
   },
-    {
-    id: 6,
-    title: "VR w/ Omnidirectional Treadmill",
-    subtitle: "Neural Monitoring Device",
-    description:
-    //  "The fNIR Cap allows us to monitor neural activity during human-AI interactions, providing valuable insights into cognitive processes and trust formation.",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FNir%20Cap.jpg-Wg80HaqSAeoAHp5xVTEgGrZoYI4Bpk.jpeg",
-    alt: "An fNIRS neuroimaging cap used to record neural activity during experiments",
-  },
 ]
 
 export function TechnologyGrid() {
