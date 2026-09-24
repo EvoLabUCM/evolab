@@ -29,7 +29,6 @@ export default function PublicationsPage() {
                 Publications
               </h1>
               <p className="mx-auto max-w-[700px] text-[#3b3183] md:text-xl">
-                Browse our complete collection of research publications
               </p>
               <div className="flex justify-center pt-4">
                 <Button
