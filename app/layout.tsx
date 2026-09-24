@@ -8,9 +8,12 @@ import { Footer } from "@/components/footer"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "EvoLab - Cognitive Science Research",
+  title: "Stay Human Lab",
   description: "Studying human-AI interaction and trust in crisis situations",
-    generator: 'v0.app'
+  icons: {
+    icon: "/images/Stay_Human_NoText.png",
+  },
+  generator: "v0.app",
 }
 
 export default function RootLayout({
