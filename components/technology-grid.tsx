@@ -25,7 +25,7 @@ const technology = [
     title: "Bunker",
     subtitle: "Autonomous Ground Vehicle",
     description:
-      "The Bunker autonomous ground vehicle allows us to simulate crisis response scenarios and study human trust in AI-powered emergency response systems.",
+    //  "The Bunker autonomous ground vehicle allows us to simulate crisis response scenarios and study human trust in AI-powered emergency response systems.",
     image: "/images/Bunker.jpeg",
     alt: "The Bunker tracked ground robot carrying a rotating LiDAR unit and a stereo camera on its upper deck",
   },
@@ -34,7 +34,7 @@ const technology = [
     title: "Unitree Go2",
     subtitle: "Quadruped Robot Platform",
     description:
-      "Our Unitree Go2 quadruped robot enables research on human-AI interaction in dynamic environments where mobility and adaptability are critical factors.",
+   //   "Our Unitree Go2 quadruped robot enables research on human-AI interaction in dynamic environments where mobility and adaptability are critical factors.",
     image: "/images/Go2.jpeg",
     alt: "The Unitree Go2 quadruped robot standing in the lab with a LiDAR sensor mounted on its back",
   },
@@ -43,7 +43,17 @@ const technology = [
     title: "fNIR Cap",
     subtitle: "Neural Monitoring Device",
     description:
-      "The fNIR Cap allows us to monitor neural activity during human-AI interactions, providing valuable insights into cognitive processes and trust formation.",
+   //   "The fNIR Cap allows us to monitor neural activity during human-AI interactions, providing valuable insights into cognitive processes and trust formation.",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FNir%20Cap.jpg-Wg80HaqSAeoAHp5xVTEgGrZoYI4Bpk.jpeg",
+    alt: "An fNIRS neuroimaging cap used to record neural activity during experiments",
+  },
+    {
+    id: 6,
+    title: "VR w/ Omnidirectional Treadmill",
+    subtitle: "Neural Monitoring Device",
+    description:
+    //  "The fNIR Cap allows us to monitor neural activity during human-AI interactions, providing valuable insights into cognitive processes and trust formation.",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FNir%20Cap.jpg-Wg80HaqSAeoAHp5xVTEgGrZoYI4Bpk.jpeg",
     alt: "An fNIRS neuroimaging cap used to record neural activity during experiments",
