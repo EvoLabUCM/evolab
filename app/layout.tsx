@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Stay Human Lab",
-  description: "Studying human-AI interaction and trust in crisis situations",
+  description: "Studying human-AI over-reliance, overtrust and parasocial bonding",
   icons: {
     icon: "/images/Stay_Human_NoText.png",
   },
