@@ -5,18 +5,18 @@ const technology = [
   {
     id: 1,
     title: "Ameca",
-    subtitle: "Expressive Humanoid Platform",
+    subtitle: "AI-Powered Humanoid",
     description:
-      "Ameca's articulated face and gestures let us study how human-like expression shapes the trust people extend to a machine.",
+     // "Ameca's articulated face and gestures let us study how human-like expression shapes the trust people extend to a machine.",
     image: "/images/Ameca.jpeg",
     alt: "The Ameca humanoid robot, a grey articulated face and exposed mechanical torso, standing against a pale wall",
   },
   {
     id: 2,
     title: "RoboThespian",
-    subtitle: "Humanoid Robot Research Platform",
+    subtitle: "Humanoid with ",
     description:
-      "RoboThespian is a programmable humanoid robot used in our research to study how humans interact with and trust anthropomorphic AI systems during various scenarios.",
+    //  "This humanoid .",
     image: "/images/RT.jpeg",
     alt: "The RoboThespian humanoid robot, a white shell with a metallic face and blue cabling across the shoulders",
   },
