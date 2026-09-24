@@ -24,8 +24,8 @@ export default function Home() {
                 className="mx-auto"
               />
               <p className="mx-auto max-w-[800px] text-xl md:text-2xl text-[#3b3183]">
-                Human-Robot Interaction focused research lab at UC Merced. 
-                We use humanoid robots, virtual reality, and fNIRS neuroimaging to study how people give trust to artificial intelligence, and what it costs when they give too much.
+                 
+               Research on determinants of -- and interventions against -- AI over-reliance, overtrust and parasocial bonding.
               </p>
             </div>
             <div className="space-x-4 pt-4">
