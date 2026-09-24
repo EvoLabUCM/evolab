@@ -11,7 +11,7 @@ export default function ResearchPage() {
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-3">
               <h1 className="text-3xl font-bold tracking-tighter text-[#2d3871] sm:text-4xl md:text-5xl lg:text-6xl/none">
-                Primary Research Areas
+                Human-AI Interaction Research 
               </h1>
               <p className="mx-auto max-w-[700px] text-[#3b3183] md:text-xl">
                 
@@ -31,7 +31,7 @@ export default function ResearchPage() {
 
           <div className="mx-auto mt-12 max-w-5xl space-y-6 md:mt-16">
             <h2 className="text-center text-2xl font-bold tracking-tight text-[#2d3871] md:text-2xl">
-              Other research focuses of Dr. Holbrook
+             Human-Human Interaction Research
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
               {secondaryResearchAreas.map((area) => (
