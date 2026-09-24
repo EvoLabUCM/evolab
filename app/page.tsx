@@ -25,7 +25,7 @@ export default function Home() {
               />
               <p className="mx-auto max-w-[800px] text-xl md:text-2xl text-[#3b3183]">
                  
-               To understand and resist overtrust and parasocial bonding with AI.
+               To understand and resist overtrust in AI.
               </p>
             </div>
             <div className="space-x-4 pt-4">
