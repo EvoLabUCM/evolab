@@ -24,7 +24,7 @@ const labManager = {
 
 // Graduate Students
 const graduateStudents = [
-  {name: "Kaylee Davis", role: "Graduate Student", image: "/images/placeholder.png"},
+ // {name: "Kaylee Davis", role: "Graduate Student", image: "/images/placeholder.png"},
   { name: "Derrick Liu", role: "Graduate Student", image: "/images/people/Derrick.jpg", portfolioUrl: "https://theoderic.com/"},
   { name: "Julia Ton", role: "Graduate Student", image: "/images/people/Julia.jpg", portfolioUrl: "https://www.linkedin.com/in/julia-ton/"},
 ]
