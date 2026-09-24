@@ -30,7 +30,8 @@ export function Footer() {
               <span className="font-bold text-white">STAY HUMAN LAB</span>
             </Link>
             <p className="max-w-sm text-sm leading-relaxed text-white/70">
-              HRI focus Cognitive Science research lab at UC Merced ran by Dr. Colin Holbrook.
+            To understand and resist overtrust in AI.
+
             </p>
           </div>
 
