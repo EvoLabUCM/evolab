@@ -25,7 +25,7 @@ export default function Home() {
               />
               <p className="mx-auto max-w-[800px] text-xl md:text-2xl text-[#3b3183]">
                  
-               Research on determinants of -- and interventions against -- AI over-reliance, overtrust and parasocial bonding.
+               Research on determinants of - and interventions against - AI over-reliance, overtrust and parasocial bonding.
               </p>
             </div>
             <div className="space-x-4 pt-4">
