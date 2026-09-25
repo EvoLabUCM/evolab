@@ -9,6 +9,7 @@ const technology = [
     description:
      "Ameca's articulated face and gestures let us study how human-like expression shapes the trust people extend to a machine.",
     image: "/images/Ameca.jpeg",
+    imagePosition: "object-top",
     alt: "The Ameca humanoid robot, a grey articulated face and exposed mechanical torso, standing against a pale wall",
   },
   {
@@ -18,6 +19,7 @@ const technology = [
     description:
       "This humanoid .",
     image: "/images/RT.jpeg",
+    imagePosition: "object-bottom",
     alt: "The RoboThespian humanoid robot, a white shell with a metallic face and blue cabling across the shoulders",
   },
   {
@@ -48,6 +50,16 @@ const technology = [
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FNir%20Cap.jpg-Wg80HaqSAeoAHp5xVTEgGrZoYI4Bpk.jpeg",
     alt: "An fNIRS neuroimaging cap used to record neural activity during experiments",
   },
+  {
+    id: 6,
+    title: "Full-Body VR Platform ",
+    subtitle: "Omnidirectional Treadmill VR Experience",
+    description:
+     "Our studies can take place outside of the physical world, which we achieve with our Infinadeck treadmill and collection of VR headsets.",
+    image:
+      "images/VR_Treadmill.png",
+    alt: "An RA with a headset on trying out our VR experience",
+  },
 ]
 
 export function TechnologyGrid() {
@@ -60,7 +72,7 @@ export function TechnologyGrid() {
               src={withBasePath(item.image)}
               alt={item.alt}
               fill
-              className="object-cover"
+              className={`object-cover ${item.imagePosition ?? ""}`}
               sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
             />
           </div>

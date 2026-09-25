@@ -28,8 +28,6 @@ export function PersonCard({
 }: PersonCardProps) {
   const [isExpanded, setIsExpanded] = useState(false)
 
-  // Only Dr. Holbrook carries a bio, so most cards have nothing to reveal —
-  // don't offer an expand affordance on those.
   const hasDetails = Boolean(description || portfolioUrl || cvUrl || expectedGraduation)
 
   return (
@@ -57,9 +55,9 @@ export function PersonCard({
           )}
         />
 
-        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white">
+        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white [-webkit-text-stroke:3px_#2d3871] [paint-order:stroke_fill]">
           <h3 className="font-bold text-base sm:text-lg">{name}</h3>
-          <p className="text-xs sm:text-sm text-white/90">{role}</p>
+          <p className="text-xs sm:text-sm">{role}</p>
         </div>
 
         <button
