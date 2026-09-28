@@ -31,7 +31,7 @@ export default function ResearchPage() {
 
           <div className="mx-auto mt-12 max-w-5xl space-y-6 md:mt-16">
             <h2 className="text-center text-2xl font-bold tracking-tight text-[#2d3871] md:text-2xl">
-             Also... Human-Human Research
+             <i></i>Also...</i> Human-Human Research
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
               {secondaryResearchAreas.map((area) => (
