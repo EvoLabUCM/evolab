@@ -22,6 +22,15 @@ const technology = [
     imagePosition: "object-bottom",
     alt: "The RoboThespian humanoid robot, a white shell with a metallic face and blue cabling across the shoulders",
   },
+    {
+    id: 3,
+    title: "Unitree Go2",
+    subtitle: "Quadrupedal Mobile Robot",
+    description:
+     "Our Unitree Go2 quadrupedal mobile robot enables us to conduct field research assessing effects of animorphic design features likely to evoke psychological associations with dogs.",
+    image: "/images/Go2.jpeg",
+    alt: "The Unitree Go2 quadruped robot standing in the lab with a LiDAR sensor mounted on its back",
+  },
   {
     id: 4,
     title: "Bunker Mini",
@@ -32,20 +41,11 @@ const technology = [
     alt: "The Bunker tracked ground robot carrying a rotating LiDAR unit and a stereo camera on its upper deck",
   },
   {
-    id: 3,
-    title: "Unitree Go2",
-    subtitle: "Quadrupedal Mobile Robot",
-    description:
-     "Our Unitree Go2 quadrupedal mobile robot enables us to conduct field research assessing effects of animorphic design features likely to evoke psychological associations with dogs.",
-    image: "/images/Go2.jpeg",
-    alt: "The Unitree Go2 quadruped robot standing in the lab with a LiDAR sensor mounted on its back",
-  },
-  {
     id: 5,
-    title: "fNIR Cap",
-    subtitle: "Neural Monitoring Device",
+    title: "Functional Near-Infrared Spectroscopy",
+    subtitle: "fNIRS",
     description:
-     "The fNIR Cap allows us to monitor neural activity during human-AI interactions, providing valuable insights into cognitive processes and trust formation.",
+     "This non-invasive brain imaging technique measures local blood oxygen changes in the brain to track neural activity. We use fNIRS to assess neural correlates of overreliance on AI.",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FNir%20Cap.jpg-Wg80HaqSAeoAHp5xVTEgGrZoYI4Bpk.jpeg",
     alt: "An fNIRS neuroimaging cap used to record neural activity during experiments",
