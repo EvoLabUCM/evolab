@@ -30,7 +30,7 @@ export function Footer() {
               <span className="font-bold text-white">STAY HUMAN LAB</span>
             </Link>
             <p className="max-w-sm text-sm leading-relaxed text-white/70">
-            To understand and resist overtrust in AI.
+            To understand and confront overreliance on AI.
 
             </p>
           </div>
