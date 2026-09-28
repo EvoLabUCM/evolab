@@ -17,7 +17,7 @@ export const primaryResearchAreas: ResearchArea[] = [
   },
   {
     title: "Anthropomorphism and Perceptions of Robots",
-    description: "How much does humanlike appearance influence human appraisals of robots?",
+    description: "How much does humanlike appearance influence appraisals of robots?",
     #icon: Heart,
     href: "/research/emotion",
   },
