@@ -10,8 +10,8 @@ export type ResearchArea = {
 /** The three main areas, shown as featured cards */
 export const primaryResearchAreas: ResearchArea[] = [
   {
-    title: "Human-AI Interaction",
-    description: "Studying how humans interact with and trust AI systems in various contexts.",
+    title: "AI Overtrust in Life-or-Death Decisions",
+    description: "How prone to overtrust are we when the decision stakes are grave? How relevant is anthropomorphic design?",
     icon: Brain,
     href: "/research/human-ai-interaction",
   },
