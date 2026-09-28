@@ -1,6 +1,6 @@
 export const researchCategories = {
   "human-ai-interaction": {
-    title: "Human-AI Interaction",
+    title: "AI Overtrust in Life-or-Death Decisions",
     description:
       "Research focusing on how humans interact with and trust AI systems in various contexts, particularly during crisis situations.",
     publications: [
