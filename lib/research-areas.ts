@@ -51,7 +51,7 @@ export const secondaryResearchAreas: ResearchArea[] = [
   },
   {
     title: "Supernatural Cognition",
-    description: "Effects of .",
+    description: "Effects of supernatural concepts on interpersonal judgment and belief formation.",
     icon: Church,
     href: "/research/religion",
   },
