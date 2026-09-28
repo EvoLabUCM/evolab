@@ -51,13 +51,13 @@ export const secondaryResearchAreas: ResearchArea[] = [
   },
   {
     title: "Supernatural Cognition",
-    description: "Effects of supernatural concepts on social judgment.",
+    description: "Effects of supernatural concepts on judgment.",
     icon: Church,
     href: "/research/religion",
   },
   {
-    title: "Other Research Areas",
-    description: "Miscellaneous",
+    title: "Emotion",
+    description: "Effects of state emotion on cooperation and conflict.",
     icon: Plus,
     href: "/research/other",
   },
