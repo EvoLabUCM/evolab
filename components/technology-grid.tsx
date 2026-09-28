@@ -52,10 +52,10 @@ const technology = [
   },
   {
     id: 6,
-    title: "Full-Body VR Platform ",
-    subtitle: "Omnidirectional Treadmill VR Experience",
+    title: "Embodied Virtual Reality",
+    subtitle: "Infinadeck Treadmill, HTC Vive",
     description:
-     "Our studies can take place outside of the physical world, which we achieve with our Infinadeck treadmill and collection of VR headsets.",
+     "We use immersive VR to study naturalistic human-AI decision-making, including life-or-death contexts (e.g., fire or active shooter evacuations) which would not otherwise be feasible to simulate.",
     image:
       "images/VR_Treadmill.png",
     alt: "An RA with a headset on trying out our VR experience",
