@@ -25,7 +25,7 @@ export default function Home() {
               />
               <p className="mx-auto max-w-[800px] text-xl md:text-2xl text-[#3b3183]">
                  
-               To understand and resist overreliance on AI.
+               To understand and confront overreliance on AI.
               </p>
             </div>
             <div className="space-x-4 pt-4">
