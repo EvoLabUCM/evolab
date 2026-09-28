@@ -10,8 +10,8 @@ export type ResearchArea = {
 /** The three main areas, shown as featured cards */
 export const primaryResearchAreas: ResearchArea[] = [
   {
-    title: "AI Overtrust in Life-or-Death Decisions",
-    description: "How prone to overtrust are we when the decision stakes are grave?",
+    title: "Overtrust in Life-or-Death Decisions",
+    description: "How prone to overtrust AI are we when the decision stakes are grave?",
     icon: Brain,
     href: "/research/human-ai-interaction",
   },
@@ -22,8 +22,8 @@ export const primaryResearchAreas: ResearchArea[] = [
     href: "/research/emotion",
   },
   {
-    title: "AI and Social Emotions",
-    description: "How vulnerable are we to social and emotional manipulation?",
+    title: "Social Emotions",
+    description: "How vulnerable are we to social and emotional manipulation by AI companies?",
     icon: HeartHandshake,
     href: "/research/social-connection",
   },
