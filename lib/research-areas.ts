@@ -32,26 +32,26 @@ export const primaryResearchAreas: ResearchArea[] = [
 /** The remaining areas, shown as compact cards beneath the main three */
 export const secondaryResearchAreas: ResearchArea[] = [
   {
-    title: "Group Bias",
-    description: "Examining biases in group dynamics and decision-making processes.",
+    title: "Coalitional Threat Psychology",
+    description: "Group dynamics and decision-making processes related to group conflict and violence stereotypes.",
     icon: Users,
     href: "/research/group-bias",
   },
   {
     title: "Threat Appraisal",
-    description: "Analyzing how humans assess and respond to threats in crisis situations.",
+    description: "Analyzing how humans assess and respond to threats.",
     icon: Shield,
     href: "/research/threat-appraisal",
   },
   {
     title: "Morality",
-    description: "Exploring moral decision-making and ethical considerations in AI interactions.",
+    description: "Contextual determinants of moral intuitions.",
     icon: Scale,
     href: "/research/morality",
   },
   {
-    title: "Religion",
-    description: "Investigating the intersection of religious beliefs and AI trust.",
+    title: "Supernatural Cognition",
+    description: "Effects of .",
     icon: Church,
     href: "/research/religion",
   },
