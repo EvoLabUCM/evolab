@@ -11,19 +11,19 @@ export type ResearchArea = {
 export const primaryResearchAreas: ResearchArea[] = [
   {
     title: "AI Overtrust in Life-or-Death Decisions",
-    description: "How prone to overtrust are we when the decision stakes are grave? How relevant is anthropomorphic design?",
+    description: "How prone to overtrust are we when the decision stakes are grave?",
     icon: Brain,
     href: "/research/human-ai-interaction",
   },
   {
-    title: "Emotion",
-    description: "Investigating emotional responses and regulation in human-AI interactions.",
+    title: "Anthropomorphism and Perceptions of Robots",
+    description: "How much does humanlike appearance influence human appraisals of robots?",
     icon: Heart,
     href: "/research/emotion",
   },
   {
-    title: "Social Connection",
-    description: "Text Here.",
+    title: "AI and Social Emotions",
+    description: "How vulnerable are we to social and emotional manipulation?",
     icon: HeartHandshake,
     href: "/research/social-connection",
   },
