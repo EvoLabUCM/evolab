@@ -23,7 +23,7 @@ const technology = [
     alt: "The RoboThespian humanoid robot, a white shell with a metallic face and blue cabling across the shoulders",
   },
   {
-    id: 3,
+    id: 4,
     title: "Bunker Mini",
     subtitle: "Track-based Mobile Robot",
     description:
@@ -32,11 +32,11 @@ const technology = [
     alt: "The Bunker tracked ground robot carrying a rotating LiDAR unit and a stereo camera on its upper deck",
   },
   {
-    id: 4,
+    id: 3,
     title: "Unitree Go2",
     subtitle: "Quadrupedal Mobile Robot",
     description:
-     "Our Unitree Go2 quadrupedal mobile robot enables us to conduct field research with mobile robots with animorphic design features likely to evoke psychological associations with dogs.",
+     "Our Unitree Go2 quadrupedal mobile robot enables us to conduct field research assessing effects of animorphic design features likely to evoke psychological associations with dogs.",
     image: "/images/Go2.jpeg",
     alt: "The Unitree Go2 quadruped robot standing in the lab with a LiDAR sensor mounted on its back",
   },
