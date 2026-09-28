@@ -9,7 +9,7 @@ const principalInvestigator = {
   role: "Principal Investigator",
   image: "/images/people/ColinHolbrook.jpg",
   description:
-    "Dr. Holbrook is an Associate Professor of Cognitive and Information Sciences at UC Merced, leading research in human-AI interaction and trust during crisis situations. His work spans multiple disciplines including cognitive science, anthropology, psychology, and artificial intelligence, with particular emphasis on understanding how humans assess and respond to threats in crisis situations. His current research primarily concerns human-AI interaction during crises, investigating how humans interact with and trust artificial intelligence systems in critical situations.",
+    "Dr. Holbrook is an Associate Professor of Cognitive and Information Sciences at UC Merced and PI of Stay Human Lab. Holbrook's current research focuses on reducing cognitive and social desklliing related to AI overreliance. His overall work drawsa from disciplines such as anthropology, psychology, and social neuroscience to understand determinants of conflict, cooperation and decision-making during crises.",
   portfolioUrl: "http://colinholbrook.com",
   cvUrl: "http://colinholbrook.com/Colin_Holbrook_Curriculum_Vitae.pdf",
 }
