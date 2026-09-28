@@ -5,9 +5,9 @@ const technology = [
   {
     id: 1,
     title: "Ameca",
-    subtitle: "AI-Powered Humanoid",
+    subtitle: "Highly Anthropomorphic Humanoid",
     description:
-     "Ameca's articulated face and gestures let us study how human-like expression shapes the trust people extend to a machine.",
+     "This advanced humanoid is controlled by an LLM and capable of both spontaneous, open-ended human-robot interaction and experimentally controlled, consistent responsiveness. The robot can produce lifelike movement, including microexpressions.",
     image: "/images/Ameca.jpeg",
     imagePosition: "object-top",
     alt: "The Ameca humanoid robot, a grey articulated face and exposed mechanical torso, standing against a pale wall",
@@ -15,28 +15,28 @@ const technology = [
   {
     id: 2,
     title: "RoboThespian",
-    subtitle: "Humanoid with ",
+    subtitle: "Humanoid with Variable Face",
     description:
-      "This humanoid .",
+      "This humanoid uses a rear-projected, translucent 3D mask to display both animated facial expressions and varying social characteristics (i.e., gender, race, age or ethnicity).",
     image: "/images/RT.jpeg",
     imagePosition: "object-bottom",
     alt: "The RoboThespian humanoid robot, a white shell with a metallic face and blue cabling across the shoulders",
   },
   {
     id: 3,
-    title: "Bunker",
-    subtitle: "Autonomous Ground Vehicle",
+    title: "Bunker Mini",
+    subtitle: "Track-based Mobile Robot",
     description:
-      "The Bunker autonomous ground vehicle allows us to simulate crisis response scenarios and study human trust in AI-powered emergency response systems.",
+      "The Bunker Mini permits us to conduct field research with mobile robots which do not possess anthropomorphic or animorphic design features.",
     image: "/images/Bunker.jpeg",
     alt: "The Bunker tracked ground robot carrying a rotating LiDAR unit and a stereo camera on its upper deck",
   },
   {
     id: 4,
     title: "Unitree Go2",
-    subtitle: "Quadruped Robot Platform",
+    subtitle: "Quadrupedal Mobile Robot",
     description:
-     "Our Unitree Go2 quadruped robot enables research on human-AI interaction in dynamic environments where mobility and adaptability are critical factors.",
+     "Our Unitree Go2 quadrupedal mobile robot enables us to conduct field research with mobile robots with animorphic design features likely to evoke psychological associations with dogs.",
     image: "/images/Go2.jpeg",
     alt: "The Unitree Go2 quadruped robot standing in the lab with a LiDAR sensor mounted on its back",
   },
