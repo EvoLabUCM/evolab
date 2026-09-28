@@ -33,7 +33,7 @@ export const primaryResearchAreas: ResearchArea[] = [
 export const secondaryResearchAreas: ResearchArea[] = [
   {
     title: "Coalitional Threat Psychology",
-    description: "Group dynamics and decision-making processes related to conflict and violence stereotypes.",
+    description: "Group dynamics and decision-making processes related to violence.",
     icon: Users,
     href: "/research/group-bias",
   },
