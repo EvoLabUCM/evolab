@@ -16,7 +16,7 @@ export const primaryResearchAreas: ResearchArea[] = [
     href: "/research/human-ai-interaction",
   },
   {
-    title: "Anthropomorphism and Perceptions of Robots",
+    title: "Anthropomorphism and Social Psychology",
     description: "How much does humanlike appearance influence appraisals of robots?",
     icon: Heart,
     href: "/research/emotion",
@@ -33,13 +33,13 @@ export const primaryResearchAreas: ResearchArea[] = [
 export const secondaryResearchAreas: ResearchArea[] = [
   {
     title: "Coalitional Threat Psychology",
-    description: "Group dynamics and decision-making processes related to group conflict and violence stereotypes.",
+    description: "Group dynamics and decision-making processes related to conflict and violence stereotypes.",
     icon: Users,
     href: "/research/group-bias",
   },
   {
-    title: "Threat Appraisal",
-    description: "Analyzing how humans assess and respond to threats.",
+    title: "Credulity",
+    description: "The impact of political orientation, religiosity and negativity bias on willingness to believe.",
     icon: Shield,
     href: "/research/threat-appraisal",
   },
@@ -51,7 +51,7 @@ export const secondaryResearchAreas: ResearchArea[] = [
   },
   {
     title: "Supernatural Cognition",
-    description: "Effects of supernatural concepts on interpersonal judgment and belief formation.",
+    description: "Effects of supernatural concepts on social judgment.",
     icon: Church,
     href: "/research/religion",
   },
