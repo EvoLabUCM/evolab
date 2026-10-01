@@ -39,7 +39,7 @@ export const secondaryResearchAreas: ResearchArea[] = [
   },
   {
     title: "Credulity",
-    description: "The impact of political orientation, religiosity and negativity bias on willingness to believe.",
+    description: "The impact of factors such as political orientation, religiosity and negativity bias on willingness to believe false claims.",
     icon: Shield,
     href: "/research/threat-appraisal",
   },
